@@ -6,15 +6,23 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import {HttpModule} from '@angular/http';
+import {Transfer} from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     MyApp,
     HomePage
   ],
   imports: [
+    
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpClientModule,
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,6 +32,10 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    FileTransfer,
+    Transfer,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

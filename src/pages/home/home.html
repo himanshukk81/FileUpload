@@ -7,8 +7,28 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <button (click)="getImage()" ion-button color="secondary">Get Image</button>
+    <img [src]="imageUrl" [hidden]="hideImage" style="width:50%;height:auto">
+  <button (click)="uploadImage2()" ion-button color="secondary">Upload</button>
+  <button (click)="uploadImage3()" ion-button color="secondary">Second Upload</button>
+  <button (click)="downloadImage()" ion-button color="secondary">Download</button>
+  <button (click)="insertPost()" ion-button color="secondary">Insert</button>
+  <button (click)="getImages()" ion-button color="secondary">Get Images</button>
+      
+   
+   <p *ngIf="!loadDone">Loading Images</p>
+
+   image 
+   <img src="{{imageUrl}}" style="width:50%;height:auto"> 
+
+   <div *ngIf="images">
+    <h2 text-center *ngIf="images.length==0 && loadDone">No Images Right now</h2>
+   </div> 
+
+  <ion-list *ngFor="let image of images">
+    <ion-item>
+         <img [src]="image.imageUrl" [hidden]="hideImage" style="width:50%;height:auto">
+    </ion-item>
+  </ion-list>
+
 </ion-content>
